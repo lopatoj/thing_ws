@@ -1,0 +1,6 @@
+[submodule "src/external/mujoco_ros2_control"]
+	path = src/external/mujoco_ros2_control
+	url = https://github.com/ros-controls/mujoco_ros2_control.git
+[submodule "src/external/rq_fts_ros2_driver"]
+	path = src/external/rq_fts_ros2_driver
+	url = https://github.com/panagelak/rq_fts_ros2_driver.git
