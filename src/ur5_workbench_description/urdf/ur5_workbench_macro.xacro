@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro" />
+
+  <xacro:macro
+    name="ur5_workbench"
+    params="
+      parent
+      *origin
+
+      thing1_joint_limits_parameters_file
+      thing1_kinematics_parameters_file
+      thing1_physical_parameters_file
+      thing1_visual_parameters_file
+
+      thing2_joint_limits_parameters_file
+      thing2_kinematics_parameters_file
+      thing2_physical_parameters_file
+      thing2_visual_parameters_file
+      "
+  >
+    <joint name="table_base_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}" />
+      <child link="table" />
+    </joint>
+
+    <link name="table" />
+
+    <link name="thing1_robot_mount" />
+    <joint name="thing1_robot_mount_joint" type="fixed">
+      <parent link="table" />
+      <child link="thing1_robot_mount" />
+      <origin xyz="0.2 0.3 0" rpy="0 0 ${pi}" />
+    </joint>
+
+    <xacro:ur_robot
+      name="thing1"
+      tf_prefix="thing1_"
+      parent="thing1_robot_mount"
+      joint_limits_parameters_file="${thing1_joint_limits_parameters_file}"
+      kinematics_parameters_file="${thing1_kinematics_parameters_file}"
+      physical_parameters_file="${thing1_physical_parameters_file}"
+      visual_parameters_file="${thing1_visual_parameters_file}"
+    >
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:ur_robot>
+
+    <link name="thing2_robot_mount" />
+    <joint name="thing2_robot_mount_joint" type="fixed">
+      <parent link="table" />
+      <child link="thing2_robot_mount" />
+      <origin xyz="1.2 0.3 0" rpy="0 0 ${pi}" />
+    </joint>
+
+    <xacro:ur_robot
+      name="thing2"
+      tf_prefix="thing2_"
+      parent="thing2_robot_mount"
+      joint_limits_parameters_file="${thing2_joint_limits_parameters_file}"
+      kinematics_parameters_file="${thing2_kinematics_parameters_file}"
+      physical_parameters_file="${thing2_physical_parameters_file}"
+      visual_parameters_file="${thing2_visual_parameters_file}"
+    >
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:ur_robot>
+  </xacro:macro>
+</robot>
