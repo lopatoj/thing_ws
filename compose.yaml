@@ -1,0 +1,33 @@
+services:
+  main:
+    build:
+      context: .
+      target: main
+      dockerfile: Dockerfile
+      args:
+        USERNAME: ${USER:-ur5_workbench}
+        USER_UID: ${USER_UID:-1000}
+        USER_GID: ${USER_GID:-1000}
+    command: sleep infinity
+    init: true
+    privileged: true
+    network_mode: host
+    ulimits:
+      rtprio: 99
+    environment:
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-1}
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1`**
+      - RCUTILS_COLORIZED_OUTPUT=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+              count: all
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - $HOME/.Xauthority:/home/er4-user/.Xauthority:ro
+      - .:/home/${USER:-ur5_workbench}/ur5_workbench_ws:rw

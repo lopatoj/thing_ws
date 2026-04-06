@@ -1,45 +1,8 @@
 {
-  "name": "thing_ws ROS2 devcontainer",
-  "privileged": true,
-  "remoteUser": "thing",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "args": {
-      "USERNAME": "thing",
-      "USER_UID": "1000",
-      "USER_GID": "1000"
-    }
-  },
-  "workspaceMount": "source=${localWorkspaceFolder},target=/${localWorkspaceFolderBasename},type=bind",
-  "workspaceFolder": "/${localWorkspaceFolderBasename}",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-vscode.cpptools",
-        "ms-vscode.cmake-tools",
-        "ms-python.black-formatter",
-        "ms-python.debugpy",
-        "ms-python.vscode-pylance",
-        "ranch-hand-robotics.rde-ros-2",
-        "ranch-hand-robotics.urdf-editor"
-      ]
-    }
-  },
-  "containerEnv": {
-    "DISPLAY": "unix:0",
-    "ROS_LOCALHOST_ONLY": "0",
-    "ROS_DOMAIN_ID": "0"
-  },
-  "runArgs": [
-    "--net=host",
-    "--pid=host",
-    "--ipc=host",
-    "-e",
-    "DISPLAY=${env:DISPLAY}"
-  ],
-  "mounts": [
-    "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
-    "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached"
-  ],
-  "postCreateCommand": "bash -c 'cd \"$WORKSPACE_FOLDER\" && mkdir -p src && (if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then sudo rosdep init; fi) && rosdep update && rosdep install --from-paths src --ignore-src -r -y && source /opt/ros/$ROS_DISTRO/setup.bash && colcon build && sudo chown -R $(id -u):$(id -g) .'"
+  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/refs/heads/main/schemas/devContainer.base.schema.json",
+  "name": "ur5_workbench_ws ROS2 devcontainer",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "main",
+  "workspaceFolder": "/home/${localEnv:USER}/ur5_workbench_ws",
+  "remoteUser": "${localEnv:USER}"
 }
