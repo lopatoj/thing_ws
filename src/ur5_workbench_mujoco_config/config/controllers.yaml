@@ -7,7 +7,54 @@ joint_state_broadcaster:
     update_rate: 50
     type: joint_state_broadcaster/JointStateBroadcaster
 
+force_torque_sensor_broadcaster1:
+  ros__parameters:
+    type: force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster
+    frame_id: thing1_robotiq_ft_frame_id
+    sensor_name: thing1_tcp_fts_sensor
+    sensor_filter_chain:
+      filter1:
+        name: thing1_gravity_compensation
+        type: control_filters/GravityCompensationWrench
+        params:
+          world_frame: world
+          sensor_frame: thing1_robotiq_ft_frame_id
+          tool:
+            CoG: [-6.25975791e-05, -6.71295872e-05, 5.38791162e-02]
+            mass: 0.9208642730400001
+
+force_torque_sensor_broadcaster2:
+  ros__parameters:
+    type: force_torque_sensor_broadcaster/ForceTorqueSensorBroadcaster
+    frame_id: thing2_robotiq_ft_frame_id
+    sensor_name: thing2_tcp_fts_sensor
+    sensor_filter_chain:
+      filter1:
+        name: thing2_gravity_compensation
+        type: control_filters/GravityCompensationWrench
+        params:
+          world_frame: world
+          sensor_frame: thing2_robotiq_ft_frame_id
+          tool:
+            CoG: [-6.25975791e-05, -6.71295872e-05, 5.38791162e-02]
+            mass: 0.9208642730400001
+
 position_controller:
   ros__parameters:
     type: forward_command_controller/ForwardCommandController
     interface_name: position
+    joints:
+      - thing1_shoulder_pan_joint
+      - thing1_shoulder_lift_joint
+      - thing1_elbow_joint
+      - thing1_wrist_1_joint
+      - thing1_wrist_2_joint
+      - thing1_wrist_3_joint
+      - thing1_robotiq_85_left_knuckle_joint
+      - thing2_shoulder_pan_joint
+      - thing2_shoulder_lift_joint
+      - thing2_elbow_joint
+      - thing2_wrist_1_joint
+      - thing2_wrist_2_joint
+      - thing2_wrist_3_joint
+      - thing2_robotiq_85_left_knuckle_joint

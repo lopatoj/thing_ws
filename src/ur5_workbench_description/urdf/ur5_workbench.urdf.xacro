@@ -30,6 +30,6 @@
     thing2_physical_parameters_file="$(arg thing2_physical_parameters_file)"
     thing2_visual_parameters_file="$(arg thing2_visual_parameters_file)"
   >
-    <origin xyz="0 0 1" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:ur5_workbench>
 </robot>

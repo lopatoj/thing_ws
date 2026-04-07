@@ -9,6 +9,7 @@ install(
     description
     launch
     urdf
+    rviz
   DESTINATION
     share/${PROJECT_NAME}
 )
