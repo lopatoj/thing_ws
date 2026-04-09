@@ -9,7 +9,7 @@ Panels:
         - /Grid1
         - /RobotModel1
       Splitter Ratio: 0.5
-    Tree Height: 733
+    Tree Height: 730
 Visualization Manager:
   Class: ""
   Displays:
@@ -66,6 +66,24 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        thing1_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        thing1_camera_mount_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_d405_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        thing1_d405_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         thing1_flange:
           Alpha: 1
           Show Axes: false
@@ -75,11 +93,66 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        thing1_ft300_mounting_plate:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_ft300_sensor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         thing1_ft_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        thing1_robot_mount:
+        thing1_robotiq_85_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_robotiq_85_left_finger_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_robotiq_85_left_finger_tip_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_robotiq_85_left_inner_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_robotiq_85_left_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_robotiq_85_right_finger_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_robotiq_85_right_finger_tip_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_robotiq_85_right_inner_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_robotiq_85_right_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing1_robotiq_ft_frame_id:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -89,6 +162,10 @@ Visualization Manager:
           Show Trail: false
           Value: true
         thing1_tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        thing1_tool_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -134,11 +211,66 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        thing2_ft300_mounting_plate:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing2_ft300_sensor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         thing2_ft_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        thing2_robot_mount:
+        thing2_robotiq_85_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing2_robotiq_85_left_finger_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing2_robotiq_85_left_finger_tip_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing2_robotiq_85_left_inner_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing2_robotiq_85_left_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing2_robotiq_85_right_finger_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing2_robotiq_85_right_finger_tip_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing2_robotiq_85_right_inner_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing2_robotiq_85_right_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thing2_robotiq_ft_frame_id:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -183,111 +315,6 @@ Visualization Manager:
       Update Interval: 0
       Value: true
       Visual Enabled: true
-    - Class: rviz_default_plugins/TF
-      Enabled: true
-      Filter (blacklist): ""
-      Filter (whitelist): ""
-      Frame Timeout: 15
-      Frames:
-        All Enabled: true
-        table:
-          Value: true
-        thing1_base:
-          Value: true
-        thing1_base_link:
-          Value: true
-        thing1_base_link_inertia:
-          Value: true
-        thing1_flange:
-          Value: true
-        thing1_forearm_link:
-          Value: true
-        thing1_ft_frame:
-          Value: true
-        thing1_robot_mount:
-          Value: true
-        thing1_shoulder_link:
-          Value: true
-        thing1_tool0:
-          Value: true
-        thing1_upper_arm_link:
-          Value: true
-        thing1_wrist_1_link:
-          Value: true
-        thing1_wrist_2_link:
-          Value: true
-        thing1_wrist_3_link:
-          Value: true
-        thing2_base:
-          Value: true
-        thing2_base_link:
-          Value: true
-        thing2_base_link_inertia:
-          Value: true
-        thing2_flange:
-          Value: true
-        thing2_forearm_link:
-          Value: true
-        thing2_ft_frame:
-          Value: true
-        thing2_robot_mount:
-          Value: true
-        thing2_shoulder_link:
-          Value: true
-        thing2_tool0:
-          Value: true
-        thing2_upper_arm_link:
-          Value: true
-        thing2_wrist_1_link:
-          Value: true
-        thing2_wrist_2_link:
-          Value: true
-        thing2_wrist_3_link:
-          Value: true
-        world:
-          Value: true
-      Marker Scale: 1
-      Name: TF
-      Show Arrows: true
-      Show Axes: true
-      Show Names: false
-      Tree:
-        world:
-          table:
-            thing1_robot_mount:
-              thing1_base_link:
-                thing1_base:
-                  {}
-                thing1_base_link_inertia:
-                  thing1_shoulder_link:
-                    thing1_upper_arm_link:
-                      thing1_forearm_link:
-                        thing1_wrist_1_link:
-                          thing1_wrist_2_link:
-                            thing1_wrist_3_link:
-                              thing1_flange:
-                                thing1_tool0:
-                                  {}
-                              thing1_ft_frame:
-                                {}
-            thing2_robot_mount:
-              thing2_base_link:
-                thing2_base:
-                  {}
-                thing2_base_link_inertia:
-                  thing2_shoulder_link:
-                    thing2_upper_arm_link:
-                      thing2_forearm_link:
-                        thing2_wrist_1_link:
-                          thing2_wrist_2_link:
-                            thing2_wrist_3_link:
-                              thing2_flange:
-                                thing2_tool0:
-                                  {}
-                              thing2_ft_frame:
-                                {}
-      Update Interval: 0
-      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -303,25 +330,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 3.171288013458252
+      Distance: 0.7049885392189026
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.23937705159187317
+        Y: -0.014844899997115135
+        Z: 0.07847394049167633
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7853981852531433
+      Pitch: -0.2152024805545807
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz_default_plugins)
-      Yaw: 0.7853981852531433
+      Yaw: 4.568553447723389
     Saved: ~
 Window Geometry:
   Displays:
@@ -329,7 +356,7 @@ Window Geometry:
   Height: 945
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000001000000000000017c0000035dfc0200000001fb000000100044006900730070006c006100790073010000003a0000035d000000c600ffffff0000053e0000035d00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000001000000000000017c0000035bfc0200000001fb000000100044006900730070006c006100790073010000003b0000035b000000c700ffffff0000053e0000035b00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Width: 1728
   X: 0
   Y: 30

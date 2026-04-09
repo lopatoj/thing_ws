@@ -1,18 +1,15 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>ur5_workbench_description</name>
+  <name>ur5_workbench_deploy</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="justin@lopa.to">Justin Lopato</maintainer>
+  <maintainer email="justin@lopa.to">lopatoj</maintainer>
   <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>ur_description</depend>
-  <depend>robotiq_ft_sensor_description</depend>
-  <depend>robotiq_description</depend>
-  <depend>realsense2_description</depend>
+  <depend>ur</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

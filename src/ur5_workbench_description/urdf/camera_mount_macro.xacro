@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="camera_mount" params="parent tf_prefix *origin">
+    <joint name="${tf_prefix}camera_mount_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}" />
+      <child link="${tf_prefix}camera_mount_link" />
+    </joint>
+    <link name="${tf_prefix}camera_mount_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1e-09"/>
+        <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+      </inertial>
+      <!-- Part part_1 -->
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://ur5_workbench_description/meshes/camera_mount.stl"/>
+        </geometry>
+        <material name="part_1_material">
+          <color rgba="0.647059 0.647059 0.647059 1"/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://ur5_workbench_description/meshes/camera_mount.stl"/>
+        </geometry>
+      </collision>
+    </link>
+    <link name="${tf_prefix}tool_link">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1e-9"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
+    <joint name="${tf_prefix}tool_link_frame" type="fixed">
+      <origin xyz="0 0 0.00699997" rpy="0 0 0"/>
+      <parent link="${tf_prefix}camera_mount_link"/>
+      <child link="${tf_prefix}tool_link"/>
+      <axis xyz="0 0 0"/>
+    </joint>
+    <link name="${tf_prefix}camera_link">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1e-9"/>
+        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+      </inertial>
+    </link>
+    <joint name="${tf_prefix}camera_link_frame" type="fixed">
+      <origin xyz="-8.05759e-05 -0.0777769 0.00836815" rpy="-0.139625 3.04604e-07 -4.28088e-08"/>
+      <parent link="${tf_prefix}camera_mount_link"/>
+      <child link="${tf_prefix}camera_link"/>
+      <axis xyz="0 0 0"/>
+    </joint>
+  </xacro:macro>
+</robot>

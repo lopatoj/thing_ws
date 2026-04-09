@@ -4,11 +4,16 @@
 
   <xacro:arg name="include_ros2_control" default="true"/>
 
+  <xacro:arg name="include_thing1" default="true"/>
+  <xacro:arg name="include_thing2" default="true"/>
+
+  <xacro:arg name="thing1_wrist_camera_model" default=""/>
   <xacro:arg name="thing1_joint_limits_parameters_file" default="$(find ur_description)/config/ur5/joint_limits.yaml"/>
   <xacro:arg name="thing1_kinematics_parameters_file" default="$(find ur_description)/config/ur5/default_kinematics.yaml"/>
   <xacro:arg name="thing1_physical_parameters_file" default="$(find ur_description)/config/ur5/physical_parameters.yaml"/>
   <xacro:arg name="thing1_visual_parameters_file" default="$(find ur_description)/config/ur5/visual_parameters.yaml"/>
 
+  <xacro:arg name="thing2_wrist_camera_model" default=""/>
   <xacro:arg name="thing2_joint_limits_parameters_file" default="$(find ur_description)/config/ur5/joint_limits.yaml"/>
   <xacro:arg name="thing2_kinematics_parameters_file" default="$(find ur_description)/config/ur5/default_kinematics.yaml"/>
   <xacro:arg name="thing2_physical_parameters_file" default="$(find ur_description)/config/ur5/physical_parameters.yaml"/>
@@ -20,11 +25,16 @@
 
     include_ros2_control="$(arg include_ros2_control)"
 
+    include_thing1="$(arg include_thing1)"
+    include_thing2="$(arg include_thing2)"
+
+    thing1_wrist_camera_model="$(arg thing1_wrist_camera_model)"
     thing1_joint_limits_parameters_file="$(arg thing1_joint_limits_parameters_file)"
     thing1_kinematics_parameters_file="$(arg thing1_kinematics_parameters_file)"
     thing1_physical_parameters_file="$(arg thing1_physical_parameters_file)"
     thing1_visual_parameters_file="$(arg thing1_visual_parameters_file)"
 
+    thing2_wrist_camera_model="$(arg thing2_wrist_camera_model)"
     thing2_joint_limits_parameters_file="$(arg thing2_joint_limits_parameters_file)"
     thing2_kinematics_parameters_file="$(arg thing2_kinematics_parameters_file)"
     thing2_physical_parameters_file="$(arg thing2_physical_parameters_file)"

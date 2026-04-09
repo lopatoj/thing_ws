@@ -1,29 +1,31 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro" />
-  <xacro:include filename="$(find robotiq_ft_sensor_description)/urdf/robotiq_ft300.urdf.xacro" />
-  <xacro:include filename="$(find robotiq_description)/urdf/robotiq_2f_85_macro.urdf.xacro" />
-  <xacro:include filename="$(find robotiq_ft_sensor_description)/urdf/robotiq_fts.ros2_control.xacro" />
+  <xacro:include filename="$(find ur5_workbench_description)/urdf/thing_macro.xacro" />
 
   <xacro:macro
     name="ur5_workbench"
     params="
       parent
       *origin
+
       include_ros2_control:=true
 
+      include_thing1:=true
+      thing1_wrist_camera_model
       thing1_joint_limits_parameters_file
       thing1_kinematics_parameters_file
       thing1_physical_parameters_file
       thing1_visual_parameters_file
 
+      include_thing2:=true
+      thing2_wrist_camera_model
       thing2_joint_limits_parameters_file
       thing2_kinematics_parameters_file
       thing2_physical_parameters_file
       thing2_visual_parameters_file
       "
   >
-    <joint name="table_base_joint" type="fixed">
+    <joint name="table_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent}" />
       <child link="table" />
@@ -31,76 +33,34 @@
 
     <link name="table" />
 
-    <link name="thing1_robot_mount" />
-    <joint name="thing1_robot_mount_joint" type="fixed">
-      <parent link="table" />
-      <child link="thing1_robot_mount" />
-      <origin xyz="0.381 0.381 0" rpy="0 0 ${pi}" />
-    </joint>
-
-    <xacro:ur_robot
-      name="thing1"
-      tf_prefix="thing1_"
-      parent="thing1_robot_mount"
-      joint_limits_parameters_file="${thing1_joint_limits_parameters_file}"
-      kinematics_parameters_file="${thing1_kinematics_parameters_file}"
-      physical_parameters_file="${thing1_physical_parameters_file}"
-      visual_parameters_file="${thing1_visual_parameters_file}"
-    >
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:ur_robot>
-    <xacro:robotiq_ft300 parent="tool0" tf_prefix="thing1_">
-      <origin xyz="0 0 -0.004" rpy="0 0 0" />
-    </xacro:robotiq_ft300>
-    <xacro:if value="${include_ros2_control}">
-      <xacro:robotiq_fts_ros2_control
-        name="thing1_"
-        tf_prefix="thing1_"
-      />
+    <xacro:if value="${include_thing1}">
+      <xacro:thing
+        name="thing1"
+        parent="table"
+        include_ros2_control="${include_ros2_control}"
+        wrist_camera_model="${thing1_wrist_camera_model}"
+        joint_limits_parameters_file="${thing1_joint_limits_parameters_file}"
+        kinematics_parameters_file="${thing1_kinematics_parameters_file}"
+        physical_parameters_file="${thing1_physical_parameters_file}"
+        visual_parameters_file="${thing1_visual_parameters_file}"
+      >
+        <origin xyz="0.381 0.381 0" rpy="0 0 ${pi}" />
+      </xacro:thing>
     </xacro:if>
-    <xacro:robotiq_gripper
-      name="thing1_robotiq_gripper"
-      parent="thing1_robotiq_ft_frame_id"
-      prefix="thing1_"
-      include_ros2_control="${include_ros2_control}"
-    >
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:robotiq_gripper>
 
-    <link name="thing2_robot_mount" />
-    <joint name="thing2_robot_mount_joint" type="fixed">
-      <parent link="table" />
-      <child link="thing2_robot_mount" />
-      <origin xyz="1.905 0.381 0" rpy="0 0 ${pi}" />
-    </joint>
-
-    <xacro:ur_robot
-      name="thing2"
-      tf_prefix="thing2_"
-      parent="thing2_robot_mount"
-      joint_limits_parameters_file="${thing2_joint_limits_parameters_file}"
-      kinematics_parameters_file="${thing2_kinematics_parameters_file}"
-      physical_parameters_file="${thing2_physical_parameters_file}"
-      visual_parameters_file="${thing2_visual_parameters_file}"
-    >
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:ur_robot>
-    <xacro:robotiq_ft300 parent="tool0" tf_prefix="thing2_">
-      <origin xyz="0 0 -0.004" rpy="0 0 0" />
-    </xacro:robotiq_ft300>
-    <xacro:if value="${include_ros2_control}">
-      <xacro:robotiq_fts_ros2_control
-        name="thing2_"
-        tf_prefix="thing2_"
-      />
+    <xacro:if value="${include_thing2}">
+      <xacro:thing
+        name="thing2"
+        parent="table"
+        include_ros2_control="${include_ros2_control}"
+        wrist_camera_model="${thing2_wrist_camera_model}"
+        joint_limits_parameters_file="${thing2_joint_limits_parameters_file}"
+        kinematics_parameters_file="${thing2_kinematics_parameters_file}"
+        physical_parameters_file="${thing2_physical_parameters_file}"
+        visual_parameters_file="${thing2_visual_parameters_file}"
+      >
+        <origin xyz="1.905 0.381 0" rpy="0 0 ${pi}" />
+      </xacro:thing>
     </xacro:if>
-    <xacro:robotiq_gripper
-      name="thing2_robotiq_gripper"
-      parent="thing2_robotiq_ft_frame_id"
-      prefix="thing2_"
-      include_ros2_control="${include_ros2_control}"
-    >
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:robotiq_gripper>
   </xacro:macro>
 </robot>
