@@ -16,6 +16,26 @@ def generate_launch_description():
                 [description_package, "urdf", "ur5_workbench.urdf.xacro"]
             ),
             description="Path to the URDF file",
+        ),
+        DeclareLaunchArgument(
+            name="include_thing1",
+            default_value="true",
+            description="",
+        ),
+        DeclareLaunchArgument(
+            name="include_thing2",
+            default_value="true",
+            description="",
+        ),
+        DeclareLaunchArgument(
+            name="thing1_wrist_camera_model",
+            default_value="",
+            description="",
+        ),
+        DeclareLaunchArgument(
+            name="thing2_wrist_camera_model",
+            default_value="",
+            description="",
         )
     ]
 
@@ -28,8 +48,17 @@ def generate_launch_description():
                 " ",
                 description_file,
                 " ",
+                "include_thing1:=",
+                LaunchConfiguration("include_thing1"),
+                " ",
+                "include_thing2:=",
+                LaunchConfiguration("include_thing2"),
+                " ",
                 "thing1_wrist_camera_model:=",
-                "d405"
+                LaunchConfiguration("thing1_wrist_camera_model"),
+                " ",
+                "thing2_wrist_camera_model:=",
+                LaunchConfiguration("thing2_wrist_camera_model"),
             ]
         ),
         value_type=str,

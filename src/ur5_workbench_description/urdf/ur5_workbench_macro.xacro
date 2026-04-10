@@ -11,14 +11,14 @@
       include_ros2_control:=true
 
       include_thing1:=true
-      thing1_wrist_camera_model
+      thing1_wrist_camera_model:=''
       thing1_joint_limits_parameters_file
       thing1_kinematics_parameters_file
       thing1_physical_parameters_file
       thing1_visual_parameters_file
 
       include_thing2:=true
-      thing2_wrist_camera_model
+      thing2_wrist_camera_model:=''
       thing2_joint_limits_parameters_file
       thing2_kinematics_parameters_file
       thing2_physical_parameters_file
@@ -44,7 +44,7 @@
         physical_parameters_file="${thing1_physical_parameters_file}"
         visual_parameters_file="${thing1_visual_parameters_file}"
       >
-        <origin xyz="0.381 0.381 0" rpy="0 0 ${pi}" />
+        <origin xyz="1.905 0.381 0" rpy="0 0 ${pi/2}" />
       </xacro:thing>
     </xacro:if>
 
@@ -59,7 +59,7 @@
         physical_parameters_file="${thing2_physical_parameters_file}"
         visual_parameters_file="${thing2_visual_parameters_file}"
       >
-        <origin xyz="1.905 0.381 0" rpy="0 0 ${pi}" />
+        <origin xyz="0.381 0.381 0" rpy="0 0 ${pi/2}" />
       </xacro:thing>
     </xacro:if>
   </xacro:macro>

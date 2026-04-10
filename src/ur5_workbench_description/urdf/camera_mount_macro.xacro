@@ -38,7 +38,7 @@
       </inertial>
     </link>
     <joint name="${tf_prefix}tool_link_frame" type="fixed">
-      <origin xyz="0 0 0.00699997" rpy="0 0 0"/>
+      <origin xyz="0 0 0.00299997" rpy="0 0 0"/>
       <parent link="${tf_prefix}camera_mount_link"/>
       <child link="${tf_prefix}tool_link"/>
       <axis xyz="0 0 0"/>

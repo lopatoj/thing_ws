@@ -11,6 +11,9 @@ def generate_launch_description():
     urdf_file = PathJoinSubstitution(
         [mujoco_config_package, "urdf", "ur5_workbench.mujoco_ros2_control.xacro"]
     )
+    scene_file = PathJoinSubstitution(
+        [mujoco_config_package, "description", "scene.xml"]
+    )
 
     robot_description_content = Command(
         [
@@ -22,7 +25,14 @@ def generate_launch_description():
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
-        parameters=[{"robot_description": ParameterValue(robot_description_content, value_type=str)}],
+        parameters=[
+            {
+                "robot_description": ParameterValue(
+                    robot_description_content, value_type=str
+                ),
+                "use_sim_time": True,
+            }
+        ],
     )
 
     mjcf_conversion_node = Node(
@@ -30,7 +40,7 @@ def generate_launch_description():
         executable="robot_description_to_mjcf.sh",
         output="both",
         emulate_tty=True,
-        arguments=["--publish_topic", "/mujoco_robot_description"],
+        arguments=["--publish_topic", "/mujoco_robot_description", "--scene", scene_file, "-s"],
     )
 
     parameters_file = PathJoinSubstitution(
@@ -39,7 +49,9 @@ def generate_launch_description():
     mujoco_plugins_file = PathJoinSubstitution(
         [mujoco_config_package, "config", "plugins.yaml"]
     )
-    rviz_config_file = PathJoinSubstitution([mujoco_config_package, "rviz", "wrench.rviz"])
+    rviz_config_file = PathJoinSubstitution(
+        [mujoco_config_package, "rviz", "wrench.rviz"]
+    )
 
     mujoco_ros2_control_node = Node(
         package="mujoco_ros2_control",
@@ -103,6 +115,7 @@ def generate_launch_description():
         executable="rviz2",
         name="rviz2",
         output="screen",
+        parameters=[{"use_sim_time": True}],
         arguments=["-d", rviz_config_file],
     )
 
@@ -115,6 +128,6 @@ def generate_launch_description():
             position_controller,
             fts_broadcaster1,
             fts_broadcaster2,
-            rviz_node
+            rviz_node,
         ]
     )

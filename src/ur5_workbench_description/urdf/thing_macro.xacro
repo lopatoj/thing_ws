@@ -31,7 +31,7 @@
       <xacro:insert_block name="origin" />
     </xacro:ur_robot>
     <xacro:robotiq_ft300 parent="tool0" tf_prefix="${name}_">
-      <origin xyz="0 0 -0.004" rpy="0 0 0" />
+      <origin xyz="0 0 -0.004" rpy="0 0 ${-pi/2}" />
     </xacro:robotiq_ft300>
     <xacro:if value="${include_ros2_control}">
       <xacro:robotiq_fts_ros2_control

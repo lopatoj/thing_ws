@@ -1,3 +1,4 @@
+from math import pi
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.substitutions import PathJoinSubstitution
@@ -11,12 +12,18 @@ def generate_launch_description():
     robot_state_publisher_launch = IncludeLaunchDescription(
         PathJoinSubstitution(
             [description_package, "launch", "robot_state_publisher.launch.py"]
-        )
+        ),
     )
 
     joint_state_publisher_gui_node = Node(
         package="joint_state_publisher_gui",
         executable="joint_state_publisher_gui",
+        parameters=[{
+            "zeros.thing1_shoulder_lift_joint": -(pi/2),
+            "zeros.thing1_wrist_1_joint": -(pi/2),
+            "zeros.thing2_shoulder_lift_joint": -(pi/2),
+            "zeros.thing2_wrist_1_joint": -(pi/2),
+        }]
     )
 
     rviz_config_file = PathJoinSubstitution([description_package, "rviz", "view.rviz"])
