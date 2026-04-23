@@ -1,0 +1,15 @@
+# Default initial positions for ur5_workbench's ros2_control fake system
+
+initial_positions:
+  thing1_elbow_joint: 0
+  thing1_shoulder_lift_joint: 0
+  thing1_shoulder_pan_joint: 0
+  thing1_wrist_1_joint: 0
+  thing1_wrist_2_joint: 0
+  thing1_wrist_3_joint: 0
+  thing2_elbow_joint: 0
+  thing2_shoulder_lift_joint: 0
+  thing2_shoulder_pan_joint: 0
+  thing2_wrist_1_joint: 0
+  thing2_wrist_2_joint: 0
+  thing2_wrist_3_joint: 0

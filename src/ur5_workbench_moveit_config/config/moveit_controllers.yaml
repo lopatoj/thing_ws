@@ -1,0 +1,45 @@
+# MoveIt uses this configuration for controller management
+
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  controller_names:
+    - thing1_controller
+    - thing2_controller
+    - thing1_gripper_controller
+    - thing2_gripper_controller
+
+  thing1_controller:
+    type: FollowJointTrajectory
+    joints:
+      - thing1_shoulder_pan_joint
+      - thing1_shoulder_lift_joint
+      - thing1_elbow_joint
+      - thing1_wrist_1_joint
+      - thing1_wrist_2_joint
+      - thing1_wrist_3_joint
+    action_ns: follow_joint_trajectory
+    default: true
+  thing2_controller:
+    type: FollowJointTrajectory
+    joints:
+      - thing2_shoulder_pan_joint
+      - thing2_shoulder_lift_joint
+      - thing2_elbow_joint
+      - thing2_wrist_1_joint
+      - thing2_wrist_2_joint
+      - thing2_wrist_3_joint
+    action_ns: follow_joint_trajectory
+    default: true
+  thing1_gripper_controller:
+    type: GripperCommand
+    joints:
+      - thing1_robotiq_85_left_knuckle_joint
+    action_ns: gripper_cmd
+    default: true
+  thing2_gripper_controller:
+    type: GripperCommand
+    joints:
+      - thing2_robotiq_85_left_knuckle_joint
+    action_ns: gripper_cmd
+    default: true
