@@ -10,18 +10,30 @@ def generate_launch_description():
     ur5_workbench_moveit_config = FindPackageShare("ur5_workbench_moveit_config")
 
     arguments = []
-    arguments.append(DeclareLaunchArgument(
-        "rviz_config",
-        default_value=ur5_workbench_moveit_config / "rviz/moveit.rviz",
-    ))
-    arguments.append(DeclareLaunchArgument(
-        "use_sim_time",
-        default_value="true",
-    ))
+    arguments.append(
+        DeclareLaunchArgument(
+            "rviz_config",
+            default_value=ur5_workbench_moveit_config / "rviz/moveit.rviz",
+        )
+    )
+    arguments.append(
+        DeclareLaunchArgument(
+            "use_sim_time",
+            default_value="true",
+        )
+    )
+    arguments.append(
+        DeclareLaunchArgument(
+            "moveit_config_package",
+            default_value="ur5_workbench_moveit_config",
+        )
+    )
 
     use_sim_time = LaunchConfiguration("use_sim_time")
 
-    moveit_config = MoveItConfigsBuilder("ur5_workbench", package_name="ur5_workbench_moveit_config").to_moveit_configs()
+    moveit_config = MoveItConfigsBuilder(
+        "ur5_workbench", package_name="ur5_workbench_moveit_config"
+    ).to_moveit_configs()
 
     move_group_node = Node(
         package="moveit_ros_move_group",
@@ -48,7 +60,8 @@ def generate_launch_description():
     )
 
     return LaunchDescription(
-        arguments + [
+        arguments
+        + [
             rviz_node,
             move_group_node,
         ]

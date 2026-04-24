@@ -1,5 +1,7 @@
 services:
   main:
+    env_file:
+      - .env
     build:
       context: .
       target: main

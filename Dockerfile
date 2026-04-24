@@ -27,7 +27,11 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=1
 RUN if id -u $USER_UID >/dev/null 2>&1; then userdel $(id -un $USER_UID); fi
 
 # Create a non-root user with sudo access
-RUN groupadd --gid $USER_GID $USERNAME \
+RUN if getent group $USER_GID >/dev/null 2>&1; then \
+        groupmod -n $USERNAME $(getent group $USER_GID | cut -d: -f1); \
+    else \
+        groupadd --gid $USER_GID $USERNAME; \
+    fi \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
     && apt-get update \
     && apt-get install -y sudo \
@@ -56,7 +60,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     tmux \
     vim \
     xterm \
-    wget
+    wget \
+    ssh
 
 # Switch to the non-root user
 USER $USERNAME
